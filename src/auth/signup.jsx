@@ -10,7 +10,29 @@ function SignUp() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
- 
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('firstName', firstName);
+    formData.append('lastName', lastName);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('sessionid',"empty");
+    formData.append('id',"0000000");
+
+fetch('https://localhost:7077/api/Player?sessionId=empty', {
+  method: 'POST',
+  body: formData,
+})
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+
+
     console.log(`First Name: ${firstName}, Email: ${email}`);
   };
 

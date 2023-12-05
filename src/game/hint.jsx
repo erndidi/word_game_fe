@@ -9,6 +9,8 @@ export function Hint(props) {
             <ul>
                 { // Add a conditional check here
                     props.hintList.map((hint, idx) => {
+                        console.log("hint");
+                        console.log(hint);
                         return (
                             <li key={hint.wordId} data-wordid={hint.wordId}>
                                 {hint.text}
