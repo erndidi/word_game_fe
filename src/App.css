@@ -1,0 +1,155 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.app {
+    display: flex;
+    height: 100vh; /* Use the full height of the viewport */
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.app {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* src/App.css */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-gap: 10px 20px;
+    grid-template-areas:
+        "head  head head"
+        "side1 main side2"
+        "foot  foot foot";
+}
+
+.header {
+    grid-area: head;
+}
+
+.sidebar-1 {
+    grid-area: side1;
+    background-color:lightblue;
+}
+
+.content {
+    grid-area: main;
+}
+
+.sidebar-2 {
+    grid-area: side2;
+    background-color:lightgray;
+}
+
+.footer {
+    grid-area: foot;
+}
+
+.wordWrapper {
+    display: flex;
+    margin-top: 100px;
+    flex-flow: column;
+    height: 100%;
+}
+
+
+.instruction {
+    display: flex;
+    margin-bottom: 100px;
+    height: 35%;
+    align-items: center;
+    justify-content: center;
+    background-color: aquamarine;
+}
+
+.letter_box {
+    display: inline;
+    align-items: center;
+    padding-left: 50px;
+    margin: 70px, 70px,70px,70px;
+    margin-bottom: 100px;
+}
+
+.definitions {
+    margin-bottom: 50px;
+}
+
+
+.text_display {
+    color:black;
+}
+
+.text_nodisplay {
+    color:transparent;
+}
+
+.letter_input {
+    max-width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    background-color: pink;
+}
+
+.letter_hidden {
+    color: transparent;
+    max-width: 30px;
+    max-height: 30px;
+    margin-right: 20px;
+}
+
+.letter_visible {
+    color: black;
+}
+
+.gameButtonBox {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.hintList{
+    text-align: left;
+}
+
+
