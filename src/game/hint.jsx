@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 export function Hint(props) {
     const [hints, setHints] = useState(props.hintList);
+    console.log('hints');
+    console.log(hints); 
 
 
     return (

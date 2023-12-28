@@ -23,12 +23,15 @@ export function Word() {
     const fetchWord = async () => {
         try {
             //console.log("session id is "+sessionId);
-            const response = await fetch('https://localhost:7077/api/Word?sessionId=empty');
-            const data = await response.json();
-      
+            if(wordId==0){
+                   const response = await fetch('https://localhost:7077/api/Word?sessionId=empty');
+            const data = await response.json();     
           
             initWord(data);
 
+            }
+
+         
             // Handle the response here
 
         } catch (error) {
@@ -39,7 +42,7 @@ export function Word() {
 
     useEffect(() => {
         // Define an async function
-        fetchWord(); // Call the fetchWord function when the component mounts
+      //  fetchWord(); // Call the fetchWord function when the component mounts
     }, []);
 
     useEffect(() => {
@@ -63,6 +66,7 @@ export function Word() {
         try {
             setWord(data.Text);
             setWordId(data.Id);
+            console.log('word',word);
           
             const defs = [];
             var incremeter=0;
@@ -147,13 +151,12 @@ export function Word() {
             <p>{word}</p>
             <p>{word.length-1}</p>
             <div className="letter_box">
-                <Letter
+               {wordId > 0 &&  <Letter
                     game_letters={game_letters}
                     handleAttempt={onHandleAttempt}
-                ></Letter>
-                <Hint truWordId={wordId} hintList={hints}></Hint>
-                <Options handleNewGame={newGame} handleRemoveHint={removeHint} handleRevealLetter={revealLetter}/>
-
+                ></Letter>}
+                {wordId>0  && <Hint truWordId={wordId} hintList={hints}></Hint>}
+                <Options handleNewGame={newGame} handleRemoveHint={removeHint} handleRevealLetter={revealLetter}/> 
             </div>
 
            
