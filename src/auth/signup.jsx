@@ -1,12 +1,10 @@
 import { useState, useContext } from 'react';
-import './signup.style.css';
-//import {createPlayer} from '../services/playersvc'
+import '../styles/signup.css';
+import {PlayerContext} from '../context/playerprovider';
+
 function SignUp() {
-  const [username, setUserName] = useState('');
-  const [firstname, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+ 
+  const {username, setUsername, score,setScore, sessionid, setSessionid, attempts, setAttempts} = useContext(PlayerContext);
   const[isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({
     username: '',
@@ -15,24 +13,34 @@ function SignUp() {
     email: '',
     password: ''
   });
-  
- // const {playerData, createPlayer} = useContext(PlayerContext);
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('handle submit');
-    console.log('username is '+username);
-   //const data = {"firstname":firstname, "lastname":lastName,"username": username, "email":email, "password":password};
-    console.log('data is ');
-    console.log(formData);
-
+      //const data = {"firstname":firstname, "lastname":lastName,"username": username, "email":email, "password":password};
+   
 fetch('https://localhost:7077/api/SignUp', {
-  method: 'POST',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
   body: JSON.stringify(formData),
 })
   .then(response => response.json())
   .then(data => {
+    console.log("data is ");
     console.log(data);
+    setUsername(data.username);
+    setSessionid(data.sessionid);
+    setScore(data.score);
+    console.log("username is ")
+    console.log(username);
+    console.log("sessionid is ")
+    console.log(sessionid);
+    console.log("score is ")
+    console.log(score);
+    
   })
   .catch(error => {
     console.error('Error:', error);
