@@ -62,9 +62,9 @@
       "nav content side"
       "footer footer footer";
   
-    grid-template-columns: 200px 1fr 200px;
+    grid-template-columns: 10% 80% 10%;
     grid-template-rows: auto 1fr auto;
-    grid-gap: 10px;
+    grid-gap: 200px;
   
     height: 100vh;
   }
@@ -108,12 +108,28 @@ header {
     background-color: aquamarine;
 }
 
+.letter_length_select {
+    display: inline;
+    align-items:start;
+    padding-left: 50px;
+    margin: 70px, 70px,70px;
+    margin-top: 70px;
+    margin-right: 70px;
+    margin-left:70px;
+    margin-bottom: 20px;
+    margin-bottom: 50px;
+   
+}
+
 .letter_box {
     display: inline;
     align-items: center;
     padding-left: 50px;
-    margin: 70px, 70px,70px,70px;
-    margin-bottom: 100px;
+    margin-top: 20px;
+    margin-right: 70px;
+    margin-left:70px;
+    margin-bottom: 20px;
+  
 }
 
 .definitions {

@@ -22,11 +22,11 @@ export function Word() {
     const [idx, setIdx] = useState  (0);
     const [username,score] = useState(PlayerContext);
 
-    const fetchWord = async () => {
+    const fetchWord = async (letterLength) => {
         try {
             //console.log("session id is "+sessionId);
-            if(wordId==0){
-                   const response = await fetch('https://localhost:7077/api/Word?sessionId=empty');
+            
+                   const response = await fetch(`https://localhost:7077/api/Word?wordLength=${letterLength}`);
             const data = await response.json();     
           
             initWord(data);
@@ -36,11 +36,17 @@ export function Word() {
          
             // Handle the response here
 
-        } catch (error) {
+         catch (error) {
             console.error('Error fetching word:', error);
         }
     }; 
-
+    const setLetterLength=(evt)=>{
+        
+        if(evt.target.value>0){
+             fetchWord(evt.target.value);
+        }
+       
+    }
 
    useEffect(() => {
         // Define an async function
@@ -66,15 +72,11 @@ export function Word() {
         try {
             setWord(data.Text);
             setWordId(data.Id);
-            console.log('word',word);
-          
             const newHints = data.Definitions.map((definition) => ({
                 wordId: definition.WordId,
                 text: definition.Text,
             }));
-            console.log("new hints");
-            console.log(newHints);
-             setHints(newHints);
+           setHints(newHints);
         } catch (error) {
             console.log("init word error is " + error);
         }
@@ -110,29 +112,25 @@ export function Word() {
 
     const onHandleAttempt = (attempt, idx) => {
         //console.log("letter of rec is "+letter_of_rec);
-     let handleAttemptArray = [...game_letters];
-     console.log("")
+     let handleAttemptArray = [...game_letters];    
         if (letter_of_rec[idx] === attempt) {            
             handleAttemptArray[idx].letter = letter_of_rec[idx];
-            handleAttemptArray[idx].readonly = true;            
-            console.log("on attempt game letters");
-            console.log(game_letters);
+            handleAttemptArray[idx].readonly = true;    
         }
        setGameLetters([...handleAttemptArray]);
     };
 
     const revealLetter = () => {
          const indexArray = rtnIdxArray(game_letters);
-         const randomIndex = rtnRandIdx(indexArray);
-                 console.log("index array is "+indexArray);
-        console.log("letter of rec random" + letter_of_rec[randomIndex])
+         const randomIndex = rtnRandIdx(indexArray);                
         const revealedLetterObject = {letter: letter_of_rec[randomIndex], readonly: true};
         let workArray = game_letters;
         workArray[randomIndex] = revealedLetterObject;
-        console.log(workArray);
-        setGameLetters([...workArray]);
+       setGameLetters([...workArray]);
        // console.log("game_letters in addletter is now " + game_letters);
     }
+
+   
 
 
 
@@ -141,8 +139,27 @@ export function Word() {
 
     return (
         <div className='wordWrapper'>
-            <p>{word}</p>
-            <p>{word.length-1}</p>
+           
+            <div className='letter_length_select'>
+            <h3>Select the number of letters the word has</h3>
+  <select onChange={setLetterLength}>
+  <option value={0}>Select word length</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+                <option value={6}>6</option>
+                <option value={7}>7</option>
+                <option value={8}>8</option>
+                <option value={9}>9</option>
+                <option value={10}>10</option>
+                <option value={11}>11</option>
+                <option value={12}>12</option>
+                <option value={13}>13</option>
+                <option value={14}>14</option>
+                <option value={15}>15</option>
+            </select>
+            </div>
+          
             <div className="letter_box">
                {wordId > 0 &&  <Letter
                     game_letters={game_letters}

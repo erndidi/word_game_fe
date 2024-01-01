@@ -9,11 +9,12 @@ const PlayerProvider = (props) => {
   const [score, setScore]  = useState(0);
   const [sessionid, setSessionid] = useState("empty");
   const [attempts, setAttempts] = useState(0);
-  const [numberOfLetters, setNumberOfLetters]=(5);
+  const [numberOfLetters, setNumberOfLetters]=useState(5);
+  const [isSignup, setIsSignup] = useState("true");
   console.log(props);
 
 
-const value = {username, setUsername, score,setScore, sessionid, setSessionid, attempts, setAttempts};
+const value = {username, setUsername, score,setScore, sessionid, setSessionid, attempts, setAttempts,numberOfLetters,setNumberOfLetters};
 
   return (
     <PlayerContext.Provider value={value}>

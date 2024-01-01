@@ -70,7 +70,7 @@ function signUp(){
     <div className="signup_container">
     <div className="wrapper">
 
-      {isSignUp ? <div className="title"><span>Sign up</span></div> : <div className="title"><span>Login</span></div>}
+     <div className="title"><span>Sign up</span></div> 
       <form action="#">
       <div className="row">
           <i className="fas fa-user"></i>
@@ -92,16 +92,16 @@ function signUp(){
           <input type="text" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email" required/>
 
         </div>
-        <div className="row">
+        <div className="row"> 
           <i className="fas fa-lock"></i>
           <input type="password" name="password" value={formData.password} onChange={handleInputChange}  placeholder="Password" required/>
         </div>
         <div className="pass"><a href="#">Forgot password?</a></div>
         <div className="row button">
-          {!isSignUp ? <input type="submit"   value="Login"/> : <input type="submit" onClick={handleSubmit}   value="Sign Up"/>}
+        <input type="submit" onClick={handleSubmit}   value="Sign Up"/>
          
         </div>
-       { !isSignUp ? <div className="signup-link">Not a member? <a onClick={toggleSignup}>Signup now</a></div>: null} 
+       
         
       </form>
     </div>
