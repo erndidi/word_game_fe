@@ -4,7 +4,6 @@ import Hint from './hint';
 import { rtnRandIdx } from '../utility';
 import {rtnIdxArray} from '../utility'
 import Options from './options';
-import {PlayerContext} from '../context/playerprovider';
 
 
 
@@ -20,7 +19,6 @@ export function Word() {
     const [canShow, setCanShow] = useState  ("letter_input");
     const [letterAttempt, setLetterAttempt] = useState  ("");
     const [idx, setIdx] = useState  (0);
-    const [username,score] = useState(PlayerContext);
 
     const fetchWord = async () => {
         try {
@@ -39,7 +37,7 @@ export function Word() {
     }; 
 
 
-   useEffect(() => {
+    useEffect(() => {
         // Define an async function
         fetchWord(); // Call the fetchWord function when the component mounts
     }, []);
@@ -59,15 +57,24 @@ export function Word() {
     
     }, [word]);
 
+
+
     const initWord = (data) => {
         try {
             setWord(data.Text);
             setWordId(data.Id);
           
-            const newHints = data.Definitions.map((definition) => ({
-                wordId: definition.WordId,
-                text: definition.Text,
-            }));
+            const defs = [];
+            var incremeter=0;
+            const incdefs = (el,idx,array) =>{
+                const def = {"wordId":el.WordId,"text": el.Text,"key":incremeter};
+                defs.push(def);
+                console.log("defs")
+                console.log(defs);
+                incremeter++;
+            }
+           
+            const newHints = data.Definitions.map(incdefs);            
             console.log("new hints");
             console.log(newHints);
              setHints(newHints);

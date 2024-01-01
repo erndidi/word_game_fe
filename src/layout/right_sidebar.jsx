@@ -1,14 +1,10 @@
-import { useState, useContext } from 'react';
-import {PlayerContext} from '../context/playerprovider';
+import React from 'react';
 
-export function RightSidebar(props) {
-    const {username, setUsername, score,setScore, sessionid, setSessionid, attempts, setAttempts} = useContext(PlayerContext);
+export function RightSidebar() {
     return (
-       <aside>
-            <p><span>Username: </span>{username}</p>
-            <p><span>Score </span>{score}</p>
-            
-        </aside>
+        <div className="sidebar-2">
+            <p>Player Info</p>
+        </div>
     );
 }
 

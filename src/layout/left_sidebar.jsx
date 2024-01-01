@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 export function LeftSidebar(){
     return (
-        <nav>
+        <div className="sidebar-1">
        
                 <ul>
                     <li><Link to="/word">Go to game</Link></li>
                         <li><Link to="/signup">Sign up</Link></li>
                     </ul>
      
-        </nav>
+        </div>
         
     );
 }

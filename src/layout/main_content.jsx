@@ -9,15 +9,13 @@ import SignUp from '../auth/signup';
 export function MainContent() {
     const location = useLocation();
     return (
-        <main>
+        <div className="content">
             <Routes>
-            <Route path="/" element={<Word />} />
             <Route path="/word" element={<Word />} />
                 <Route path="/signup" element={<SignUp />} />        
-                
             </Routes>
         
-        </main>
+        </div>
     );
 };
 export default MainContent;
