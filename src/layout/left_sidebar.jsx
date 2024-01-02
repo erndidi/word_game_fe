@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export function LeftSidebar(){
     return (
-        <nav>
+        <nav className='flex-nav'>
        
                 <ul>
                     <li><Link to="/word">Go to game</Link></li>

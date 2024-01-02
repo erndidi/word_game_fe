@@ -48,49 +48,64 @@
 }
 
 
-.app {
-    display: flex;
-    justify-content: space-between;
+* {
+    margin: 2px
+}
+
+body{
+    font-size: 24px;
+    color:white;
+    height: 100vh;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
 }
 
 /* src/App.css */
-.container {
-    display: grid;
-  
-    grid-template-areas:
-      "header header header"
-      "nav content side"
-      "footer footer footer";
-  
-    grid-template-columns: 200px 1fr 200px;
-    grid-template-rows: auto 1fr auto;
-    grid-gap: 10px;
-  
-    height: 100vh;
-  }
 
-header {
-    grid-area: header;
-  }
-  
-  nav {
-    grid-area: nav;
-    margin-left: 0.5rem;
-  }
-  
-  main {
-    grid-area: content;
-  }
-  
-  aside {
-    grid-area: side;
-    margin-right: 0.5rem;
-  }
-  
-  footer {
-    grid-area: footer;
-  }
 
+
+.flex-header{
+    background-color: #507085;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.flex-main{
+    display: flex;
+    flex:1;
+}
+
+.flex-nav{
+    background-color: #895F21;
+    padding-top: 3rem;
+    flex: 1 1 5rem;
+}
+
+.flex-article{
+    background-color: #81A43C;
+    padding-top: 3rem;
+    flex: 3 3;
+}
+.flex-aside{
+    background-color: #895F21;
+    padding-top: 3rem;
+    flex: 1 1 5rem;
+}
+
+
+.flex-footer{
+    background-color: #507085;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+}
+
+@media all and (max-width: 540px){
+    .flex-main{
+        flex-direction: column;
+    }
+}
 .wordWrapper {
     display: flex;
     margin-top: 100px;

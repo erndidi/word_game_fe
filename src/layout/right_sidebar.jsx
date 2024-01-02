@@ -4,7 +4,7 @@ import {PlayerContext} from '../context/playerprovider';
 export function RightSidebar(props) {
     const {username, setUsername, score,setScore, sessionid, setSessionid, attempts, setAttempts} = useContext(PlayerContext);
     return (
-       <aside>
+       <aside className='flex-aside'>
             <p><span>Username: </span>{username}</p>
             <p><span>Score </span>{score}</p>
             

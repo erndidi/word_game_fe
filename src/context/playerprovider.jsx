@@ -9,7 +9,7 @@ const PlayerProvider = (props) => {
   const [score, setScore]  = useState(0);
   const [sessionid, setSessionid] = useState("empty");
   const [attempts, setAttempts] = useState(0);
-  const [numberOfLetters, setNumberOfLetters]=(5);
+ // const [numberOfLetters, setNumberOfLetters]=(0);
   console.log(props);
 
 

@@ -22,13 +22,28 @@ export function Word() {
     const [idx, setIdx] = useState  (0);
     const [username,score] = useState(PlayerContext);
 
+        
+    function mockWord(){
+        var data={"Text" : "MockWord", "Id" : 1, "Definitions" : []};
+        var def1 = {"WordId" : 1, "Text": "This is the correct definition"};
+        var def2 = {"WordId" : 2, "Text": "This is definition 2"};
+        var def3 = {"WordId" : 3, "Text": "This is definition 3"};
+        var def4 = {"WordId" : 4, "Text": "This is definition 4"};
+        var def5 = {"WordId" : 5, "Text": "This is definition 5"};
+        data.Definitions.push(def1);
+        data.Definitions.push(def2);
+        data.Definitions.push(def3);
+        data.Definitions.push(def4);
+        data.Definitions.push(def5);
+        return data;
+    
+    }
+
     const fetchWord = async () => {
         try {
-            //console.log("session id is "+sessionId);
-            const response = await fetch('https://localhost:7077/api/Word?sessionId=empty');
-            const data = await response.json();
+    
       
-          
+           var data = mockWord();
             initWord(data);
 
             // Handle the response here
