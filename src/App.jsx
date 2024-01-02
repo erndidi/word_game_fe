@@ -29,7 +29,7 @@ export function App () {
                              <LeftSideBar/>
                         <MainContent/>
                         <RightSidebar/>
-                            
+                            <Footer></Footer>
                       
                        
                     </div>
