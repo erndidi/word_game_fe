@@ -75,6 +75,7 @@ export function Word() {
             const newHints = data.Definitions.map((definition) => ({
                 wordId: definition.WordId,
                 text: definition.Text,
+                cssClass : "hintList"
             }));
            setHints(newHints);
         } catch (error) {
@@ -83,12 +84,9 @@ export function Word() {
     }
     //setHints(workHint);
     function removeHint() {
-        console.log("remove hint");
         let filteredHints = hints.filter((hint) => hint.wordId !== wordId);
         const truDef = hints.find((hint) => hint.wordId === wordId);
         let removed = false;
-        console.log(truDef);
-        console.log("filtered hints is " + filteredHints.length);
         let len = filteredHints.length;
         if (len > 1) {
             do {

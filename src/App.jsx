@@ -9,6 +9,7 @@ import MainContent from './layout/main_content';
 import  RightSidebar  from './layout/right_sidebar';
 import './App.css';
 import { Header } from './layout/header';
+import Footer from './layout/footer';
 
 import PlayerProvider from './context/playerprovider';
 
