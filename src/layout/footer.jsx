@@ -4,7 +4,7 @@ export function Footer() {
 
     return (
        <footer>
-             <h3>Word Bang</h3>
+             <div>@Word Bang trademark of Blah Blah</div>
        </footer>
              
     );

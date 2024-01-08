@@ -39,3 +39,17 @@ export const letterObj = {
     letter: "",
     cssClass: ""
 }
+
+export function compareTwoArrays(ary1,ary2){
+    let bothEqual = true;
+    if(ary1.length===ary2.length){
+        for(var idx=0; idx < ary1.length; idx++){
+        if(ary1[idx]=!ary2[idx].letter){
+            bothEqual = false;
+            break;
+        }
+    
+    }
+    }
+    return bothEqual;
+}

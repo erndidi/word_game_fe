@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Letter from './letter';
 import Hint from './hint';
 import { rtnRandIdx } from '../utility';
 import {rtnIdxArray} from '../utility'
 import Options from './options';
 import {PlayerContext} from '../context/playerprovider';
+import { compareTwoArrays } from '../utility';
 
 
 
 
-export function Word() {
+export function Word() {    
     const [word, setWord] = useState ("");
+    const [firstElem, setFirstElem] = useState("");
+    const [wordArray, setWordArray] = useState([]);
     const [data, setData] = useState  ("");
     const [wordId, setWordId] = useState  (0);
     const [hints, setHints] = useState  ([])
@@ -18,10 +21,11 @@ export function Word() {
     const [letter_of_rec, setLetterRec] = useState  ([]);
     const [sessionId, setSessionId] = useState ("empty")
     const [canShow, setCanShow] = useState  ("letter_input");
-    const [letterAttempt, setLetterAttempt] = useState  ("");
-    const [idx, setIdx] = useState  (0);
-    const [username,score] = useState(PlayerContext);
-
+    const [letterTry, setLetterTry] = useState(0);
+    const [idx, setIdx] = useState  (0);  
+    const [gameFinished, setGameFinished] = useState(false);
+    const {username, setUsername, currentScore, setCurrentScore,previousScore, setPreviousScore, sessionid, setSessionid, attempts, setAttempts,numberOfLetters,setNumberOfLetters} = useContext(PlayerContext);
+    console.log('isGameFinished', gameFinished);
     const fetchWord = async (letterLength) => {
         try {
             //console.log("session id is "+sessionId);
@@ -48,29 +52,25 @@ export function Word() {
        
     }
 
-   useEffect(() => {
-        // Define an async function
-      //  fetchWord(); // Call the fetchWord function when the component mounts
-    }, []);
-
     useEffect(() => {
-        // Define an async function      
-        let worArray = word.split("").filter(function (e) { return e != " " }).map((e)=>e.toLowerCase());//removes empty array element at end of array            
-        setLetterRec([...worArray]); // Call the fetchWord function when the component mount
-        let worArray2 = [...worArray];
-        worArray.fill(" ", 0, worArray2.length);
-        const finalArray = new Array(worArray2.length);
-        for (let i = 0; i < worArray.length; i++){
+        // Define an async function  
+        if(wordArray){
+               const finalArray = new Array(wordArray.length);
+        for (let i = 0; i < wordArray.length; i++){
             finalArray[i] = { "letter": "", "readonly": false};       
         }      
 
         setGameLetters(finalArray);
+        console.log(word);
+        }
+     
     
     }, [word]);
 
     const initWord = (data) => {
         try {
             setWord(data.Text);
+            setWordArray(data.TextArray);
             setWordId(data.Id);
             const newHints = data.Definitions.map((definition) => ({
                 wordId: definition.WordId,
@@ -108,17 +108,50 @@ export function Word() {
         fetchWord();
     }
 
-    const onHandleAttempt = (attempt, idx) => {
-        //console.log("letter of rec is "+letter_of_rec);
-     let handleAttemptArray = [...game_letters];    
-        if (letter_of_rec[idx] === attempt) {            
-            handleAttemptArray[idx].letter = letter_of_rec[idx];
-            handleAttemptArray[idx].readonly = true;    
+    const checkGameDone=()=>{
+        let subWorkArray = [...wordArray];//wordArray values change to booleans if used in a direct comparison
+        if(compareTwoArrays(subWorkArray,game_letters)){
+            handleFinishedGame();
+            setGameFinished(true);
         }
-       setGameLetters([...handleAttemptArray]);
+
+      }
+
+   const setNewGame=()=>{
+      setGameFinished(false);
+      let emptyArray = [];
+      setGameLetters([...emptyArray]);
+      setHints([...emptyArray]);
+   }
+
+    const handleFinishedGame=()=>{
+        let cscore = currentScore + calcWordGameScore(word.length,letterTry);
+        setCurrentScore(cscore);
+        setGameFinished(true);
+    }
+
+        
+const calcWordGameScore =(wordlength,attempts)=>{
+    return Math.round(wordlength/attempts * 100); 
+}
+
+ 
+
+const onHandleAttempt = (attempt, idx) => {        
+ 
+          let handleAttemptArray = [...game_letters];    
+          setLetterTry(letterTry + 1)
+          
+    if (wordArray[idx]===attempt) {              
+            handleAttemptArray[idx].letter = attempt;
+            handleAttemptArray[idx].readonly = true;   
+            setGameLetters([...handleAttemptArray]);
+            checkGameDone();
+        }   
+       
     };
 
-    const revealLetter = () => {
+const revealLetter = () => {
          const indexArray = rtnIdxArray(game_letters);
          const randomIndex = rtnRandIdx(indexArray);                
         const revealedLetterObject = {letter: letter_of_rec[randomIndex], readonly: true};
@@ -137,8 +170,14 @@ export function Word() {
 
     return (
         <div className='wordWrapper'>
-           
-            <div className='letter_length_select'>
+           {gameFinished && <div>
+                <h1>You finished!</h1>
+                <div><h2>Here's your current score: {currentScore} </h2></div>
+                
+           </div>
+
+           }
+           {!gameFinished && <div className='letter_length_select'>
             <h3>Select the number of letters the word has</h3>
   <select onChange={setLetterLength}>
   <option value={0}>Select word length</option>
@@ -156,16 +195,24 @@ export function Word() {
                 <option value={14}>14</option>
                 <option value={15}>15</option>
             </select>
-            </div>
+            </div>            
+           }
+              
+		    {!gameFinished && <div className="letter_box">
+        {wordId > 0 &&  <Letter
+             game_letters={game_letters}
+             handleAttempt={onHandleAttempt}
+         ></Letter>}
+         {wordId>0  && <Hint truWordId={wordId} hintList={hints}></Hint>}
+        
+     </div> 
+  }
+
+        
+ <Options handleNewGame={setNewGame} handleRemoveHint={removeHint} handleRevealLetter={revealLetter}/> 
+     
           
-            <div className="letter_box">
-               {wordId > 0 &&  <Letter
-                    game_letters={game_letters}
-                    handleAttempt={onHandleAttempt}
-                ></Letter>}
-                {wordId>0  && <Hint truWordId={wordId} hintList={hints}></Hint>}
-                <Options handleNewGame={newGame} handleRemoveHint={removeHint} handleRevealLetter={revealLetter}/> 
-            </div>
+     
 
            
         </div>

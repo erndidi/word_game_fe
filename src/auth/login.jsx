@@ -7,11 +7,14 @@ function Login() {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {username, setUsername, score,setScore, sessionid, setSessionid, attempts, setAttempts} = useContext(PlayerContext);
+  const {username, setUsername, currentScore, setCurrentScore,previousScore, setPreviousScore, sessionid, setSessionid, attempts, setAttempts,numberOfLetters,setNumberOfLetters, isPlayerLoggedIn,setPlayerLoggedIn} = useContext(PlayerContext);
 
   const [formData, setFormData] = useState({  
+    username:'',
     email: '',
-    password: ''
+    password: '',
+    score: currentScore,
+    playerErrorMessage: ''
   });
 
   const handleSubmit = (event) => {
@@ -19,6 +22,7 @@ function Login() {
       //const data = {"firstname":firstname, "lastname":lastName,"username": username, "email":email, "password":password};
       console.log("form data is ");
       console.log(formData);
+      console.log('current score is ',currentScore);
    
 fetch('https://localhost:7077/api/Login', {
     method: 'POST',
@@ -33,20 +37,22 @@ fetch('https://localhost:7077/api/Login', {
     console.log(data);
     setUsername(data.username);
     setSessionid(data.sessionid);
-    setScore(data.score);
-    console.log("username is ")
-    console.log(username);
-    console.log("sessionid is ")
-    console.log(sessionid);
-    console.log("score is ")
-    console.log(score);
+    setCurrentScore(data.score);
+   
     
   })
   .catch(error => {
     console.error('Error:', error);
    
   });
-
+  console.log("username is ")
+  console.log(username);
+  console.log("sessionid is ")
+  console.log(sessionid);
+  console.log("score is ")
+  console.log(currentScore);
+  //setPlayerLoggedIn(true);
+  console.log('is player logged in ',isPlayerLoggedIn);
   };
 
   const handleInputChange = (event) => {
@@ -73,7 +79,7 @@ fetch('https://localhost:7077/api/Login', {
           <i className="fas fa-user"></i>
           <input type="text" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email" required/>
 
-        </div>
+        </div>  
         <div className="row">
           <i className="fas fa-lock"></i>
           <input type="password" name="password" value={formData.password} onChange={handleInputChange}  placeholder="Password" required/>

@@ -4,14 +4,15 @@ import {PlayerContext} from '../context/playerprovider';
 
 function SignUp() {
  
-  const {username, setUsername, score,setScore, sessionid, setSessionid, attempts, setAttempts} = useContext(PlayerContext);
+  const {username, setUsername, currentScore, setCurrentScore,previousScore, setPreviousScore, sessionid, setSessionid, attempts, setAttempts,numberOfLetters,setNumberOfLetters,isPlayerLoggedIn,setPlayerLoggedIn} = useContext(PlayerContext);
   const[isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({
     username: '',
     firstName: '',
     lastName: '',
     email: '',
-    password: ''
+    password: '',
+    score:currentScore
   });
 
 
@@ -68,7 +69,14 @@ function signUp(){
 
   return (
     <div className="signup_container">
-    <div className="wrapper">
+ {
+   isPlayerLoggedIn && <div className="wrapper">
+      <h3>Player is already logged in</h3>
+    </div>
+ }
+
+      {!isPlayerLoggedIn &&  <div className="wrapper">
+       
 
      <div className="title"><span>Sign up</span></div> 
       <form action="#">
@@ -96,6 +104,7 @@ function signUp(){
           <i className="fas fa-lock"></i>
           <input type="password" name="password" value={formData.password} onChange={handleInputChange}  placeholder="Password" required/>
         </div>
+     
         <div className="pass"><a href="#">Forgot password?</a></div>
         <div className="row button">
         <input type="submit" onClick={handleSubmit}   value="Sign Up"/>
@@ -105,6 +114,9 @@ function signUp(){
         
       </form>
     </div>
+      
+      }
+  
   </div>
   );
 }
