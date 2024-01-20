@@ -13,7 +13,7 @@ export function Hint(props) {
                     props.hintList.map((hint, idx) => {
                         return (
                             <li key={idx + 1} data-wordid={hint.wordId}>
-                                {hint.text}
+                                - {hint.text}
                             </li>
                         );
                     })

@@ -3,9 +3,9 @@ import React from 'react';
 export function Footer() {
 
     return (
-       <footer>
+       <React.Fragment>
              <div>@Word Bang trademark of Blah Blah</div>
-       </footer>
+       </React.Fragment>
              
     );
 

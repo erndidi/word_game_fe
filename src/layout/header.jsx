@@ -3,9 +3,9 @@ import React from 'react';
 export function Header() {
 
     return (
-       <header className='flex-header'>
+       <React.Fragment>
              <h1>Word Bang</h1>  
-       </header>
+       </React.Fragment>
              
     );
 

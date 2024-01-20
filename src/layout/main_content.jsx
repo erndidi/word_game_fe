@@ -4,20 +4,15 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Word from '../game/word';
 import SignUp from '../auth/signup';
 import Login from '../auth/login';
+import Logout from '../auth/logout';
 
 
 
 export function MainContent() {
     const location = useLocation();
     return (
-        <main>
-            <Routes>
-            <Route path="/" element={<Word />} />
-            <Route path="/word" element={<Word />} />
-                <Route path="/signup" element={<SignUp />} />    
-                <Route path="/login" element={<Login />} />       
-                
-            </Routes>
+        <main className='flex-article'>
+          
         
         </main>
     );

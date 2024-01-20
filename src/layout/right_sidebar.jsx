@@ -1,14 +1,15 @@
+import React from 'react';
 import { useState, useContext } from 'react';
 import {PlayerContext} from '../context/playerprovider';
 
 export function RightSidebar(props) {
-    const {username, setUsername, score,setScore, sessionid, setSessionid, attempts, setAttempts} = useContext(PlayerContext);
+    const {username, setUsername, currentScore, sessionid, setSessionid, attempts, setAttempts} = useContext(PlayerContext);
     return (
-       <aside>
+       <React.Fragment>
             <p><span>Username: </span>{username}</p>
-            <p><span>Score </span>{score}</p>
+            <p><span>Score </span>{currentScore}</p>
             
-        </aside>
+        </React.Fragment>
     );
 }
 

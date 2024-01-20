@@ -10,6 +10,7 @@ function Login() {
   const {username, setUsername, currentScore, setCurrentScore,previousScore, setPreviousScore, sessionid, setSessionid, attempts, setAttempts,numberOfLetters,setNumberOfLetters, isPlayerLoggedIn,setPlayerLoggedIn} = useContext(PlayerContext);
 
   const [formData, setFormData] = useState({  
+    playerid:'000000',
     username:'',
     email: '',
     password: '',
@@ -38,8 +39,6 @@ fetch('https://localhost:7077/api/Login', {
     setUsername(data.username);
     setSessionid(data.sessionid);
     setCurrentScore(data.score);
-   
-    
   })
   .catch(error => {
     console.error('Error:', error);
@@ -88,6 +87,7 @@ fetch('https://localhost:7077/api/Login', {
           <input type="submit" onClick={handleSubmit}   value="Login"/> 
            
         </div>
+    
         
         </form> 
         <div className="signup-link">Not a member? <a onClick={handleSignup}>Signup now</a></div>

@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 export function LeftSidebar(){
   
     return (
-        <nav>
-       
-                <ul>
-                    <li><Link to="/word">Go to game</Link></li>
-                        <li><Link to="/signup">Sign up</Link></li>
-                        <li><Link to="/login">Login</Link></li>
-                    </ul>
-     
-        </nav>
+       <React.Fragment>
+             <Routes>
+            <Route path="/" element={<Word />} />
+            <Route path="/word" element={<Word />} />
+                <Route path="/signup" element={<SignUp />} />    
+                <Route path="/login" element={<Login />} />   
+                <Route path="/logout" element={<Logout />} />  
+            </Routes>
+       </React.Fragment>
         
     );
 }

@@ -72,6 +72,8 @@ export function Word() {
             setWord(data.Text);
             setWordArray(data.TextArray);
             setWordId(data.Id);
+            console.log('word id is '+wordId);
+          
             const newHints = data.Definitions.map((definition) => ({
                 wordId: definition.WordId,
                 text: definition.Text,
@@ -127,6 +129,7 @@ export function Word() {
     const handleFinishedGame=()=>{
         let cscore = currentScore + calcWordGameScore(word.length,letterTry);
         setCurrentScore(cscore);
+        console.log('current score is '+currentScore);
         setGameFinished(true);
     }
 
