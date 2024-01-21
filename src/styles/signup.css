@@ -10,10 +10,9 @@
 .signup_container {
     max-width: 440px;
     padding: 0 20px;
-    margin: 170px auto;
-    background: #e0e723;
-    overflow: hidden;
-    margin: 0;
+    margin-top: 0px;
+     overflow: hidden;
+    margin-left: 200px;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins',sans-serif;
@@ -22,14 +21,13 @@
 .wrapper {
     width: 100%;
     background: #fff;
-    border-radius: 5px;
-    box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+    
+    
 }
 
     .wrapper .title {
         height: 90px;
-        background: #e0e723;
-        ;
+        background: #e0e723;        
         border-radius: 5px 5px 0 0;
         color: #0e0303;
         font-size: 30px;
@@ -37,10 +35,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 10px;
     }
 
     .wrapper form {
-        padding: 30px 25px 25px 25px;
+        padding: 0px 0px 0px 0px;
     }
 
         .wrapper form .row {
@@ -75,11 +74,8 @@ form .row input::placeholder {
     height: 100%;
     color: #0e0303;
     font-size: 18px;
-    background: #e0e723;
-    ;
-    border: 1px solid #e0e723;
-    ;
-    border-radius: 5px 0 0 5px;
+    background: #e0e723;   
+
     display: flex;
     align-items: center;
     justify-content: center;

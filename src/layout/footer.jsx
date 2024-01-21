@@ -4,7 +4,7 @@ export function Footer() {
 
     return (
        <React.Fragment>
-             <div>@Word Bang trademark of Blah Blah</div>
+             <div>@Word Bang! trademark of Blah Blah</div>
        </React.Fragment>
              
     );

@@ -4,7 +4,7 @@ export function Header() {
 
     return (
        <React.Fragment>
-             <h1>Word Bang</h1>  
+             <h1>Word Bang!</h1>  
        </React.Fragment>
              
     );

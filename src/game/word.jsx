@@ -206,11 +206,11 @@ const revealLetter = () => {
              game_letters={game_letters}
              handleAttempt={onHandleAttempt}
          ></Letter>}
-         {wordId>0  && <Hint truWordId={wordId} hintList={hints}></Hint>}
+        
         
      </div> 
   }
-
+ {wordId>0  && <Hint truWordId={wordId} hintList={hints}></Hint>}
         
  <Options handleNewGame={setNewGame} handleRemoveHint={removeHint} handleRevealLetter={revealLetter}/> 
      

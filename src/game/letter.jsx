@@ -26,7 +26,7 @@ import React, { useState, useEffect } from 'react';
         };
 
         return (
-            <div>
+            <React.Fragment>
                 <label>
 
                     {game_letters.length > 0 && // Add a conditional check here
@@ -35,6 +35,7 @@ import React, { useState, useEffect } from 'react';
 
                                 <input
                                     key={idx}
+                                    className='letter_input'
                                     type="text"
                                     value={letter.letter}
                                     readOnly={letter.readonly} // Add the readonly attribute here
@@ -44,7 +45,7 @@ import React, { useState, useEffect } from 'react';
                         })
                     }
                 </label>
-            </div>
+            </React.Fragment>
         );
     };
 
