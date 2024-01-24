@@ -4,8 +4,8 @@
 
 body{
     font-size: 24px;
-    color:white;
-    min-height: 100vh;
+    color:black;
+    min-height: 300vh;
     display:flex;
     flex-direction: column;
 }
@@ -88,10 +88,9 @@ body{
     padding-left: 50px;
     margin-top: 25px;
     margin-right: 100px;
-    margin-left:700px;
-    margin-bottom: 25px;
-   
-   
+    margin-left:600px;
+    margin-bottom: 25px;   
+   font-family: 'Bangers', cursive;
 }
 
 .letter_length_select select {
@@ -103,8 +102,9 @@ body{
     margin-bottom: 25px;
     border-radius: 10px;
     background-color:#2196F3;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     font-family: 'Bangers', cursive;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    
 }
 
 .letter_length_select select:focus{
@@ -166,36 +166,37 @@ body{
     padding-left: 450px;
     margin-top: 20px;
     margin-right: 30px;
-    margin-left:300px;
+    margin-left:200px;
     margin-bottom: 20px;
     gap: 20px;
 }
 
 .gameButtonBox button {
     border-radius: 10px;
-    background-color:#2196F3; /* Orange color */
+    background-color:#2196F3; 
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     font-family: 'Bangers', cursive;
    
 }
 
 .gameButtonBox button:hover {
-    background-color: gold; /* Lighter orange color */
+    background-color: gold; 
     transform: scale(1.05);
 }
 
-.hintList{
+.hintListContainer{
     color: black;
     font-size:large;
-    font-family: 'Bangers', cursive;
-    margin-left: 750px;
+    font-family: 'Bangers', cursive;   
+   
 }
 
-.hintList ul {
-    margin: 0; /* Remove any default margin for the ul element */
+.hintListContainer ul {
+    margin: 400; /* Remove any default margin for the ul element */
     padding: 0; /* Remove any default padding for the ul element */
     list-style: none; /* Remove the default bullet points */
     display: inline-block; /* Make the ul element inline-block to center it */
+    color: black;
 }
 
 
@@ -204,6 +205,7 @@ input:invalid:required {
   }
   ul {
     list-style-type: none;
+    margin-left: 450px;
   }
   
   ul li a {

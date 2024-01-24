@@ -14,11 +14,12 @@ const PlayerProvider = (props) => {
   const [playerErrorMessage, setPlayerErrorMessage]=useState('');
   const [isSignup, setIsSignup] = useState("true");
   const [isPlayerLoggedIn, setPlayerLoggedIn] = useState(false);
+  const[playerid,setPlayerId] = useState("000000");
 
   console.log(props);
 
 
-const value = {username, setUsername, currentScore, setCurrentScore,previousScore, setPreviousScore, sessionid, setSessionid, attempts, setAttempts,numberOfLetters,setNumberOfLetters,isPlayerLoggedIn,setPlayerLoggedIn,playerErrorMessage,setPlayerErrorMessage};
+const value = {username, setUsername, currentScore, setCurrentScore,previousScore,playerid, setPlayerId, setPreviousScore, sessionid, setSessionid, attempts, setAttempts,numberOfLetters,setNumberOfLetters,isPlayerLoggedIn,setPlayerLoggedIn,playerErrorMessage,setPlayerErrorMessage};
 
   return (
     <PlayerContext.Provider value={value}>

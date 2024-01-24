@@ -7,8 +7,9 @@ export function Hint(props) {
 
 
     return (
-        <div className='hintList'>       
-            <ul>
+           
+           <div className='hintListContainer'>
+                <ul>
                 { // Add a conditional check here
                     props.hintList.map((hint, idx) => {
                         return (
@@ -18,8 +19,10 @@ export function Hint(props) {
                         );
                     })
                 }
-                </ul>
-        </div>
+                </ul></div>
+     
+        
+      
     );
     
 

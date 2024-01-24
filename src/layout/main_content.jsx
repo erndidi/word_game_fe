@@ -11,10 +11,10 @@ import Logout from '../auth/logout';
 export function MainContent() {
     const location = useLocation();
     return (
-        <main className='flex-article'>
+        <article className='flex-article'>
           
         
-        </main>
+        </article>
     );
 };
 export default MainContent;

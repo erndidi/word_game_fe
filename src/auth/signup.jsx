@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import '../styles/signup.css';
 import {PlayerContext} from '../context/playerprovider';
 import classNames from 'classnames';
@@ -7,7 +7,7 @@ import classNames from 'classnames';
 
 function SignUp() {
  
-  const {username, setUsername, currentScore, setCurrentScore,setPlayerLoggedIn,playerErrorMessage,sessionid,setSessionid, setPlayerErrorMessage,isPlayerLoggedIn} = useContext(PlayerContext);
+  const {username, setUsername, currentScore, setCurrentScore,setPlayerLoggedIn,playerErrorMessage,sessionid,setSessionid,playerid,setPlayerId, setPlayerErrorMessage,isPlayerLoggedIn} = useContext(PlayerContext);
   const[isSignUp, setIsSignUp] = useState(false);
   const[signupSucceeded, setSignupSucceeded]=useState(true);
   const[usernameValid,setUsernameValid] = useState(true);
@@ -27,6 +27,9 @@ function SignUp() {
     errorMessage:''
   });
 
+  useEffect(()=>{
+     setNeedsToSignIn(true);
+  })
 
 
   const handleSubmit = (event) => {
@@ -47,6 +50,7 @@ function SignUp() {
     console.log("data is ");
     console.log(data);
     console.log('update success '+data.update_success);
+    setPlayerId(data.playerId);
     setUsername(data.username);
     setSessionid(data.sessionid);
     setCurrentScore(data.score);

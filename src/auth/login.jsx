@@ -7,7 +7,7 @@ function Login() {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {username, setUsername, currentScore, setCurrentScore,previousScore, setPreviousScore, sessionid, setSessionid, attempts, setAttempts,numberOfLetters,setNumberOfLetters, isPlayerLoggedIn,setPlayerLoggedIn} = useContext(PlayerContext);
+  const {username, setUsername, currentScore, setCurrentScore,setPlayer, playerid,setPlayerId, setSessionid, attempts, setAttempts,numberOfLetters,setNumberOfLetters, isPlayerLoggedIn,setPlayerLoggedIn} = useContext(PlayerContext);
 
   const [formData, setFormData] = useState({  
     playerid:'000000',
@@ -39,17 +39,15 @@ fetch('https://localhost:7077/api/Login', {
     setUsername(data.username);
     setSessionid(data.sessionid);
     setCurrentScore(data.score);
+    setPlayerId(data.playerId);
   })
   .catch(error => {
     console.error('Error:', error);
    
   });
-  console.log("username is ")
-  console.log(username);
-  console.log("sessionid is ")
-  console.log(sessionid);
-  console.log("score is ")
-  console.log(currentScore);
+  console.log("player id is ")
+  console.log(playerid);
+
   //setPlayerLoggedIn(true);
   console.log('is player logged in ',isPlayerLoggedIn);
   };
