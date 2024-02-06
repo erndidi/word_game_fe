@@ -2,7 +2,7 @@
     margin: 2px
 }
 
-body{
+/*body{
     font-size: 24px;
     color:black;
     min-height: 300vh;
@@ -25,14 +25,7 @@ body{
     flex:1;
 }
 
-.flex-nav{
-    background: linear-gradient(to right, white, #2196F3);
-    padding-top: 3rem;
-    flex: 0 0 12em;
-    font-family: 'Bangers', cursive;
-    font-size: 30px;
-    color: black;
-}
+
 
 .flex-article{
     padding-top: 3rem;
@@ -63,6 +56,89 @@ body{
         flex-direction: column;
     }
 }
+*/
+
+
+  /* grid container */
+  .holy-grail-grid {
+    display:grid;
+    grid-template-areas:
+    "header header header"
+    "nav content side"
+    "footer footer footer";     
+    grid-template-columns: 150px 1fr 150px;
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 10px;
+  
+    height: 100vh;
+}ß
+
+/* general column padding */
+.holy-grail-grid > * {
+    padding:1rem;
+}
+
+/* assign columns to grid areas */
+.holy-grail-grid > .header {
+    grid-area:header;
+    background: linear-gradient(to right, white, #2196F3);
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    font-family: 'Bangers', cursive;
+    font-size: 30px;
+    color: gold;
+}
+.holy-grail-grid > .main-content {
+    grid-area:main-content;
+    background:#fff;
+    padding-right: 100px;
+    align-items: center;
+   
+}
+.holy-grail-grid > .left-sidebar {
+    grid-area:left-sidebar;
+    background: linear-gradient(to right, white, #2196F3);
+    font-family: 'Bangers', cursive;
+    font-size: 30px;
+    color: black;
+    padding-right: 200px;
+}
+.holy-grail-grid > .right-sidebar {
+    grid-area:right-sidebar;
+    background:#c5ed77;
+}
+.holy-grail-grid > .footer {
+    grid-area:footer;
+    background:#72c2f1;
+}
+
+/* tablet breakpoint */
+@media (min-width:768px) {
+    .holy-grail-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            'header header'
+            'main-content main-content'
+            'left-sidebar right-sidebar'
+            'footer footer';
+    }
+}
+
+/* desktop breakpoint */
+@media (min-width:1024px) {
+    .holy-grail-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+            'header header header header'
+            'left-sidebar main-content main-content right-sidebar'
+            'footer footer footer footer';
+    }
+}
+
+
+
+
 
 .wordWrapper {
     display: flex;
